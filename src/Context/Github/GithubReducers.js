@@ -1,4 +1,4 @@
-const githubReducers = (state, action) => {
+const githubReducer = (state, action) => {
   switch (action.type) {
     case "GET_USERS":
       return {
@@ -6,10 +6,11 @@ const githubReducers = (state, action) => {
         users: action.payload,
         loading: false,
       };
-    case "GET_USER":
+    case "GET_USER_AND_REPOS":
       return {
         ...state,
-        user: action.payload,
+        user: action.payload.user,
+        repos: action.payload.repos,
         loading: false,
       };
     case "SET_LOADING":
@@ -22,10 +23,9 @@ const githubReducers = (state, action) => {
         ...state,
         users: [],
       };
-
     default:
       return state;
   }
 };
 
-export default githubReducers;
+export default githubReducer;
